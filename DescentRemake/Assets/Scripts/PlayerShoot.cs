@@ -65,13 +65,13 @@ public class PlayerShoot : MonoBehaviour {
                 nextmissile = Time.time + FireRateForAltFire;
             }
         }
-        else if (Input.GetButtonDown("Item"))
+      /*  else if (Input.GetButtonDown("Item"))
         {
             if (Time.time > nextitem) {
                 weapons.InitiateItemActivation(NameOfEquippedItem, FireRateForItems);
                 nextitem = Time.time + FireRateForItems;
             }
-        }
+        } */
         /*if(bulletOvImage.rectTransform.localScale.y > 0)
         {
             bulletOvImage.rectTransform.localScale = new Vector3(1, Mathf.Lerp(1, 0, firerate), 1);

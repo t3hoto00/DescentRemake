@@ -6,17 +6,17 @@ public class StatController : MonoBehaviour
 {
    
     public string addScoreURL = "http://oamkpo2016.esy.es/shots"; //be sure to add a ? to your url
-    private GetUserId getuserId;
+    //private GetUserId getuserId;
  
     void Start()
     {
-        getuserId = GetComponent<GetUserId>();
+       // getuserId = GetComponent<GetUserId>();
 
     } 
 
     public void SendAmmo()
     {
-        StartCoroutine(PostScores(getuserId.id, 1));
+        //StartCoroutine(PostScores(getuserId.id, 1));
     }
 
 

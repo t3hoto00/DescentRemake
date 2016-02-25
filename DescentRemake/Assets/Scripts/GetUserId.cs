@@ -1,4 +1,4 @@
-using UnityEngine;
+/*using UnityEngine;
 using System.Collections;
 using LitJson;
 
@@ -27,7 +27,7 @@ public class GetUserId : MonoBehaviour {
 
     IEnumerator GetID()
     {
-        yield return new WaitWhile(() => uName != "");
+      //  yield return new WaitWhile(() => uName != "");
         string Get_url = new System.Net.WebClient().DownloadString(url + "nname=" + WWW.EscapeURL(uName));
         JsonData data = JsonMapper.ToObject(Get_url);
         id = int.Parse((string)data["Reply"][0]["ID"]);
@@ -39,6 +39,6 @@ public class GetUserId : MonoBehaviour {
     }
 
     IEnumerator GetUserName() {
-        yield return new WaitUntil(() => (uName = chatManager.username) != "");
+       // yield return new WaitUntil(() => (uName = chatManager.username) != "");
     }
-}
+}*/
