@@ -14,7 +14,7 @@ public class KeyPickUp : MonoBehaviour {
 
     void OnTriggerEnter(Collider col)
     {
-        if (col.gameObject.name == "PlayerPrefab")
+        if (col.gameObject.name == "PlayerCockpit")
         {
             print("Avain löytyi!");
             keyCollected = true;

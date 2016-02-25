@@ -9,6 +9,7 @@ public class NetworkManager : MonoBehaviour
     // Use this for initialization
     public Camera standbyCamera;
     public float respawnTimer = 0;
+    public Camera lobbyCamera;
     bool connecting = false;
     SpawnSpot[] spawnSpots;
     Camera[] cameras;
@@ -79,7 +80,7 @@ public class NetworkManager : MonoBehaviour
         ConnectMP.enabled = false;
         ConnectMP.GetComponent<CanvasGroup>().alpha = 0;
 
-
+        lobbyCamera.enabled = false;
 
     }
     void Update()
@@ -185,7 +186,6 @@ public class NetworkManager : MonoBehaviour
         }
         myPlayerGO.GetComponent<PlayerShoot>().enabled = true;
         myPlayerGO.GetComponent<FiringWeapons>().enabled = true;
-        myPlayerGO.GetComponent<TrackFiringScript>().enabled = true;
         myPlayerGO.GetComponentInChildren<AudioListener>().enabled = true;
         myPlayerGO.GetComponent<HealthShield>().enabled = true;
        // myPlayerGO.GetComponent<UIController>().enabled = true;

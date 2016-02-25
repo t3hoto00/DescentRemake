@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class BulletMove : MonoBehaviour {
 
@@ -15,7 +16,8 @@ public class BulletMove : MonoBehaviour {
     private bool enemyshooter = false;
     public int bulletDamage = 5;
     public GameObject firedPlayer;
-    
+
+
 
 
     // Use this for initialization
@@ -74,17 +76,31 @@ public class BulletMove : MonoBehaviour {
             Destroy(this.gameObject);
             Destroy(bulletHit, 1.0f);
 			if (enemy != null) {
-				if (col.tag == "Player") {
-					enemy.GetComponent<PhotonView> ().RPC ("takeDmg", PhotonTargets.AllBuffered, bulletDamage);
-                    firedPlayer.GetComponent<FiringWeapons>().addHit();
-
-                    if (enemy.GetComponent<HealthShield>().health < 0)
+                if (col.tag == "Player")
+                {
+                    if (SceneManagerHelper.ActiveSceneName == "MultiplayerMap1")
                     {
-                        firedPlayer.GetComponent<FiringWeapons>().addKill();
-                    }
+                        enemy.GetComponent<PhotonView>().RPC("takeDmg", PhotonTargets.AllBuffered, bulletDamage);
+                        firedPlayer.GetComponent<FiringWeapons>().addHit();
 
+                        if (enemy.GetComponent<HealthShield>().health < 0)
+                        {
+                            firedPlayer.GetComponent<FiringWeapons>().addKill();
+                        }
+                    }
+                    else
+                    {
+                        enemy.takeDmg(bulletDamage);
+                        if(enemy.health <= 0)
+                        {
+                            SceneManager.LoadScene("Menu");
+                        }
+                    }
                 }
-				enemy.takeDmg (bulletDamage);
+                else
+                {
+                    enemy.takeDmg(bulletDamage);
+                }
 			}
         }
     }
